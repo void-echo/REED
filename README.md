@@ -2,6 +2,8 @@
 
 REED predicts the methylation level of every cytosine, on both strands and in all sequence contexts (CG, CHG, CHH), from DNA sequence alone. It fine-tunes the NTv3-100M post-trained DNA language model (InstaDeep) with a small per-base head, and reads each prediction from 10 kb of sequence around it. A model is trained on one genome and one methylome (or a consensus of many) and can then be applied to any sequence of that genome or another.
 
+The manuscript describing REED, *DNA sequence sets the destination of spontaneous epimutations in plants*, is included as [`Wang_et_al_2026_REED.pdf`](Wang_et_al_2026_REED.pdf).
+
 ## Install
 
 Python 3.10 and a GPU with 24 GB of memory (prediction also runs on CPU, slowly).
@@ -55,4 +57,4 @@ Checkpoints that also carry training metadata load as they are. `python convert_
 
 ## Citation
 
-Wang et al., in preparation.
+Wang D, Jin J, Qiao J, Wei L, Liu Q. DNA sequence sets the destination of spontaneous epimutations in plants. Manuscript, 2026.
