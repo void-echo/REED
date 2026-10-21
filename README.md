@@ -12,7 +12,7 @@ Python 3.10 and a GPU with 24 GB of memory (prediction also runs on CPU, slowly)
 pip install -r requirements.txt
 ```
 
-The backbone `InstaDeepAI/NTv3_100M_post` is downloaded from the Hugging Face Hub on first use, at the revision pinned in `configs/reed_100m.json`. To work offline, pass a local copy with `--backbone DIR`. The backbone's license (non-commercial use) also applies to models trained with REED.
+The backbone `InstaDeepAI/NTv3_100M_post` is downloaded from the Hugging Face Hub on first use, at the revision pinned in `configs/reed_100m.json`. To work offline, pass a local copy with `--backbone DIR`.
 
 ## Train
 
@@ -54,6 +54,10 @@ python predict.py --checkpoint reed.pt --fasta genome.fa --region 4:1000001-1100
 `--region` takes `chrom` or `chrom:start-end` (1-based, inclusive) and can be repeated. `--bed` takes a BED file of regions. With neither option, the whole FASTA is predicted. The output is a tab-separated table with a header line and one row per cytosine: `chrom`, `pos` (1-based), `strand`, `context`, `p` (predicted methylation level, 0 to 1). Each 512-bp block is predicted from the 10 kb centred on it, and sequence beyond the chromosome ends is treated as N.
 
 Checkpoints that also carry training metadata load as they are. `python convert_checkpoint.py in.pt out.pt` strips one down to the weights and model settings.
+
+## License
+
+The code in this repository is released under the MIT License (`LICENSE`). The manuscript PDF is not covered by it. REED models are fine-tuned from NTv3, so trained models fall under the NTv3 model license: non-commercial use only, and models derived from it may be shared only for non-commercial purposes and under the same license.
 
 ## Citation
 
