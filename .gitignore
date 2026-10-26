@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.pt
+*.npy
+*.tsv
+*.tsv.gz
+runs/
