@@ -4,15 +4,29 @@ REED predicts the methylation level of every cytosine, on both strands and in al
 
 The manuscript describing REED, *DNA sequence sets the destination of spontaneous epimutations in plants*, is available on bioRxiv: https://www.biorxiv.org/content/10.64898/2026.10.21.760629v1
 
-## Install
+## Requirements
 
-Python 3.10 and a GPU with 24 GB of memory (prediction also runs on CPU, slowly).
+Linux (tested on Ubuntu 24.04), Python 3.10 and the versions in `requirements.txt`. Training needs a GPU with 24 GB of memory (tested on an NVIDIA RTX 3090); the demo and prediction also run on a CPU.
+
+## Install
 
 ```
 pip install -r requirements.txt
 ```
 
-The backbone `InstaDeepAI/NTv3_100M_post` is downloaded from the Hugging Face Hub on first use, at the revision pinned in `configs/reed_100m.json`. To work offline, pass a local copy with `--backbone DIR`.
+Installation takes about 5 minutes. The backbone `InstaDeepAI/NTv3_100M_post` is downloaded from the Hugging Face Hub on first use, at the revision pinned in `configs/reed_100m.json`. It is gated: accept its conditions on the model page and run `huggingface-cli login`. To work offline, pass a local copy with `--backbone DIR`.
+
+## Demo
+
+`demo/` holds 800 kb of the TAIR10 genome and the methylation of a Col-0 plant (GSM1085222) in those regions.
+
+```
+python train.py --config demo/demo.json --fasta demo/demo.fa --methylation demo/demo.allc.tsv.gz --format allc \
+    --train-chroms demo_train --val-chroms demo_val --out runs/demo
+python predict.py --checkpoint runs/demo/reed.pt --fasta demo/demo.fa --region demo_test --out runs/demo/pred.tsv.gz
+```
+
+Output: `runs/demo/reed.pt` and `runs/demo/pred.tsv.gz`, a table of 35,694 cytosines. The demo takes about 1 minute on a GPU and about 40 minutes on an 8-core CPU.
 
 ## Train
 

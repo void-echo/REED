@@ -5,3 +5,4 @@ __pycache__/
 *.tsv
 *.tsv.gz
 runs/
+!demo/*.tsv.gz
