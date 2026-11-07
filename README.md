@@ -26,7 +26,7 @@ python train.py --config demo/demo.json --fasta demo/demo.fa --methylation demo/
 python predict.py --checkpoint runs/demo/reed.pt --fasta demo/demo.fa --region demo_test --out runs/demo/pred.tsv.gz
 ```
 
-Output: `runs/demo/reed.pt` and `runs/demo/pred.tsv.gz`, a table of 35,694 cytosines. The demo takes about 1 minute on a GPU and about 40 minutes on an 8-core CPU.
+Output: `runs/demo/reed.pt` and `runs/demo/pred.tsv.gz`, a table of 35,694 cytosines. The demo takes about 1 minute on a GPU and about 30 minutes on an 8-core CPU.
 
 ## Train
 
