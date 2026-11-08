@@ -14,7 +14,7 @@ Linux (tested on Ubuntu 24.04), Python 3.10 and the versions in `requirements.tx
 pip install -r requirements.txt
 ```
 
-Installation takes about 5 minutes. The backbone `InstaDeepAI/NTv3_100M_post` is downloaded from the Hugging Face Hub on first use, at the revision pinned in `configs/reed_100m.json`. It is gated: accept its conditions on the model page and run `huggingface-cli login`. To work offline, pass a local copy with `--backbone DIR`.
+Tested on Linux with Python 3.10.16 and PyTorch 2.6.0. Typical installation time via pip is 1–2 minutes. The backbone `InstaDeepAI/NTv3_100M_post` is downloaded from the Hugging Face Hub on first use, at the revision pinned in `configs/reed_100m.json`. It is gated: accept its conditions on the model page and run `huggingface-cli login`. To work offline, pass a local copy with `--backbone DIR`.
 
 ## Demo
 
